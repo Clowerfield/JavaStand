@@ -18,5 +18,5 @@ public class ComList {
 		System.out.format("Current Amperage = %d\n", AnObject.A());
 	}
 	
-
+	
 }

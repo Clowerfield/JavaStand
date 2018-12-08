@@ -6,7 +6,7 @@ public interface Shadow {
 	public String Country(String Country);
 	public long StartTime(long ST);
 	public long Time(long T);
-	public int external(int E);
+	public int external(int E, boolean c);
 	public boolean TurnMode(short A, short V, boolean button);
 	long Timer(long StartTime, long Time);
 	boolean ISUsed(boolean action);

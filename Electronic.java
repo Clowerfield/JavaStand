@@ -1,6 +1,5 @@
-import java.util.Date;
 
-public abstract class Electronic implements Shadow{
+public class Electronic implements Shadow{
 	static public long timeMemory;
 	static public long timeCalculated;
 	static public String storedMark;
@@ -51,8 +50,9 @@ public abstract class Electronic implements Shadow{
 	public long Time() {
 		return timeCalculated;
 	}
-	public int external(int E) {
-		ext += E;
+	public int external(int E, boolean c) {
+		if(c)ext += E;
+		else ext = E;
 		return E;
 	}
 	public int external() {
@@ -60,10 +60,10 @@ public abstract class Electronic implements Shadow{
 	}
 	
 	public Electronic() {
-		this.A((short) 12);
-		this.V ((short) 220);
-		this.Mark("Samsung Cyclone");
-		this.Country("Made in USA");
+		this.A((short) 4);
+		this.V ((short) 12);
+		this.Mark("Mark");
+		this.Country("Country");
 	}
 	
 	public boolean TurnMode(short Am, short Vm, boolean button) {
@@ -121,7 +121,16 @@ public abstract class Electronic implements Shadow{
 	}
 
 	public int PowerUsed(short A, short V, long Time) {
-		return external((int) Time*A*V/3600);
+		return external((int) Time*A*V/3600, true);
 	}
 
+	public void Tracer(Electronic Trace) {
+		this.A(Trace.A());
+		this.V(Trace.V());
+		this.Mark(Trace.Mark());
+		this.Country(Trace.Country());
+		this.StartTime(Trace.StartTime());
+		this.Time(Trace.Time());
+		this.external(Trace.external(), false);
+	}
 }
